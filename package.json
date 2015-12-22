@@ -1,0 +1,15 @@
+{
+  "name": "websocks.js",
+  "version": "0.0.1",
+  "description": "Websockets implementation",
+  "author": "ebenpack",
+  "scripts": {},
+  "main": "websocks.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ebenpack/websocks.js"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "license": "MIT"
+}
