@@ -17,6 +17,11 @@ function websocks(server) {
             "Sec-WebSocket-Accept: " + calculateSockKey(req.headers['sec-websocket-key'] + "\r\n") +
             "\r\n"
         );
+
+        socket.on('data', parse);
+
+        function parse(chunk) {
+        }
     });
 }
 
