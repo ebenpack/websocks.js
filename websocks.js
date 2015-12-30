@@ -21,6 +21,14 @@ function websocks(server) {
         socket.on('data', parse);
 
         function parse(chunk) {
+            var maskKey;
+            var index;
+            var bitcursor = 0;
+            var fin = chunk[0] >> 7;
+            var RSV1 = chunk[0] >> 6;
+            var RSV2 = chunk[0] >> 5;
+            var RSV3 = chunk[0] >> 4;
+            var Opcode = chunk[0] & 15;
         }
     });
 }
