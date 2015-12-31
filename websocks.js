@@ -29,6 +29,10 @@ function websocks(server) {
             var RSV2 = chunk[0] >> 5;
             var RSV3 = chunk[0] >> 4;
             var Opcode = chunk[0] & 15;
+            bitcursor += 8;
+            var mask = chunk[1] >> 7;
+            var payloadLen = chunk[1] & 127;
+            bitcursor += 8;
         }
     });
 }
