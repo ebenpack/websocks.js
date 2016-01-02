@@ -33,6 +33,22 @@ function websocks(server) {
             var mask = chunk[1] >> 7;
             var payloadLen = chunk[1] & 127;
             bitcursor += 8;
+            if (payloadLen === 126) {
+                payloadLen = (chunk[2] << 8) | chunk[3];
+                bitcursor += 16;
+            } else if (payloadLen === 127) {
+                payloadLen = (
+                    (chunk[2] << 56) |
+                    (chunk[3] << 48) |
+                    (chunk[4] << 40) |
+                    (chunk[5] << 32) |
+                    (chunk[6] << 24) |
+                    (chunk[7] << 16) |
+                    (chunk[8] << 8) |
+                    (chunk[9] << 0)
+                );
+                bitcursor += 64;
+            }
         }
     });
 }
