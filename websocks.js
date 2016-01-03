@@ -49,6 +49,11 @@ function websocks(server) {
                 );
                 bitcursor += 64;
             }
+            if (mask) {
+                index = Math.floor(bitcursor / 8);
+                maskKey = chunk.slice(index, index + 4);
+                bitcursor += 4 * 8;
+            }
         }
     });
 }
