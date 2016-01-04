@@ -54,6 +54,13 @@ function websocks(server) {
                 maskKey = chunk.slice(index, index + 4);
                 bitcursor += 4 * 8;
             }
+            index = Math.floor(bitcursor / 8);
+            data = chunk.slice(index);
+            if (maskKey) {
+                for (var i = 0, len = data.length; i < len; i++) {
+                    data[i] = data[i] ^ maskKey[i % 4];
+                }
+            }
         }
     });
 }
